@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="content=width-content, initial-scale=1">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="style/jquery.bxslider.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/1ea024fba4.js" crossorigin="anonymous"></script>
+    <title>Tatto</title>
+  </head>
+  <body>
+  <!--SVG SPRITES-->
+  <svg style="display:none">
+    <symbol id="tattooing" viewBox="0 0 470 470">
+      <g>
+        <path d="m409.631,45c4.142,0 7.5-3.358 7.5-7.5v-30c0-4.142-3.358-7.5-7.5-7.5h-236.011c-4.142,0-7.5,3.358-7.5,7.5v112.5h-43.5c-4.142,0-7.5,3.358-7.5,7.5v7.5h-15v-7.5c0-4.142-3.358-7.5-7.5-7.5h-17.251c-12.407,0-22.5,10.093-22.5,22.5s10.093,22.5 22.5,22.5h17.251c4.142,0 7.5-3.358 7.5-7.5v-7.5h15v7.5c0,4.142 3.358,7.5 7.5,7.5h28.5v15.661c-20.422,3.566-36,21.412-36,42.839v117.022c0,21.427 15.578,39.273 36,42.839v30.161c0,8.798 6.534,16.081 15,17.3v31.678c0,4.142 3.358,7.5 7.5,7.5s7.5-3.358 7.5-7.5v-31.678c8.466-1.22 15-8.502 15-17.3v-30.161c20.422-3.566 36-21.412 36-42.839v-117.022c0-21.427-15.578-39.273-36-42.839v-15.661h213.512c4.142,0 7.5-3.358 7.5-7.5v-30c0-4.142-3.358-7.5-7.5-7.5h-22.5v-75h22.499zm-341.762,97.5c-2.84217e-14-4.136 3.364-7.5 7.5-7.5h9.751v15h-9.751c-4.136,0-7.5-3.364-7.5-7.5zm334.262,7.5h-272.011v-15h272.012v15zm-185.012,190.522c0,15.715-12.785,28.5-28.5,28.5h-30c-15.715,0-28.5-12.785-28.5-28.5v-117.022c0-15.715 12.785-28.5 28.5-28.5h30c15.715,0 28.5,12.785 28.5,28.5v117.022zm-38.5,75.5h-10c-1.355,0-2.5-1.145-2.5-2.5v-29.5h15v29.5c0,1.355-1.145,2.5-2.5,2.5zm2.5-236.022h-15v-15h15v15zm0-165h221.012v15h-221.012v-15zm88.005,105v-52.5c0-4.141-3.356-7.497-7.495-7.5-4.147,0-7.505,3.358-7.505,7.5v52.5h-43.005v-75h73.006v75h-15.001zm-88.005-75h15v75h-15v-75zm191.011,75h-15v-52.5c0-4.142-3.358-7.5-7.5-7.5-4.143,0.001-7.5,3.358-7.5,7.5v52.5h-43.006v-75h73.006v75z"/>
+        <path d="m152.62,348.022h42c4.142,0 7.5-3.358 7.5-7.5-0.001-4.143-3.359-7.5-7.5-7.5h-42c-4.141,0-7.499,3.357-7.5,7.498 0,4.144 3.358,7.502 7.5,7.502z"/>
+        <path d="m194.62,303.767h-42c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h42c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.5-7.5-7.5z"/>
+        <path d="m194.62,274.511h-42c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h42c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.5-7.5-7.5z"/>
+        <path d="m194.62,245.255h-42c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h42c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.5-7.5-7.5z"/>
+        <path d="m152.62,231h42c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.5-7.5-7.5h-42c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5z"/>
+      </g>
+    </symbol>
+    <symbol id="piercing" viewBox="0 0 512 512">
+      <g><path d="m61 437c0 41.355 33.645 75 75 75s75-33.645 75-75c0-43.132-36.6-77.87-80.317-74.791-26.269-30.536-40.683-68.398-40.683-107.209 0-90.981 74.467-165 166-165s166 74.019 166 165c0 38.812-14.414 76.673-40.683 107.209-43.717-3.079-80.317 31.659-80.317 74.791 0 41.355 33.645 75 75 75s75-33.645 75-75c0-5.394-.585-10.652-1.672-15.726 40.465-46.893 62.672-105.638 62.672-166.274 0-140.608-114.841-255-256-255s-256 114.392-256 255c0 60.636 22.207 119.381 62.672 166.274-1.087 5.074-1.672 10.332-1.672 15.726zm120 0c0 24.813-20.187 45-45 45s-45-20.187-45-45 20.187-45 45-45 45 20.187 45 45zm195 45c-24.813 0-45-20.187-45-45s20.187-45 45-45 45 20.187 45 45-20.187 45-45 45zm-346-227c0-124.065 101.383-225 226-225s226 100.935 226 225c0 48.953-16.483 96.568-46.762 136.083-6.203-7.984-13.973-14.686-22.855-19.636 25.663-34.047 39.617-74.735 39.617-116.447 0-108.931-89.7-195-196-195-108.006 0-196 87.7-196 195 0 41.711 13.954 82.4 39.617 116.447-8.882 4.949-16.653 11.652-22.855 19.636-30.279-39.515-46.762-87.13-46.762-136.083z"/></g>
+    </symbol>
+    <symbol id="cover" viewBox="0 0 470.003 470.003">
+      <g>
+        <g>
+          <path d="m295.059,170.899c2.302-1.281 3.86-3.735 3.86-6.556v-56.776c0-4.142-3.357-7.5-7.5-7.5h-18.746v-44.063c0-4.142-3.357-7.5-7.5-7.5h-3.707l-7.456-42.306c-0.632-3.584-3.746-6.198-7.386-6.198h-23.246c-3.64,0-6.754,2.614-7.386,6.198l-7.456,42.306h-3.706c-4.142,0-7.5,3.358-7.5,7.5v44.064h-18.747c-4.142,0-7.5,3.358-7.5,7.5v56.776c0,2.821 1.559,5.275 3.861,6.556-21.875,18.707-34.798,46.123-34.798,75.799v175.64c0,26.282 21.382,47.665 47.665,47.665h94.381c26.282,0 47.665-21.382 47.665-47.665v-175.64c0-29.677-12.923-57.092-34.798-75.8zm19.798,251.439c0,18.011-14.653,32.665-32.665,32.665h-94.381c-18.011,0-32.665-14.653-32.665-32.665v-175.64c0-31.519 17.157-60.035 44.885-74.855h69.942c27.727,14.82 44.884,43.336 44.884,74.855v175.64zm-74.527-407.338l5.906,33.504h-22.469l5.905-33.504h10.658zm-28,48.504h2.475c0.066,0 42.868,0 42.868,0v36.564h-45.343v-36.564zm-26.247,51.564h22.612v19.276c0,4.142 3.358,7.5 7.5,7.5s7.5-3.358 7.5-7.5v-19.276h22.612v19.276c0,4.142 3.357,7.5 7.5,7.5s7.5-3.358 7.5-7.5v-19.276h22.611v41.776h-97.836v-41.776z"/>
+          <path d="m177.647,254.199h114.71c4.141,0 7.497-3.356 7.5-7.496 0-4.146-3.357-7.504-7.5-7.504h-114.71c-4.142,0-7.5,3.358-7.5,7.5 0.002,4.144 3.359,7.5 7.5,7.5z"/>
+          <path d="m177.646,399.838h114.71c4.141,0 7.497-3.355 7.5-7.495 0-4.147-3.357-7.505-7.5-7.505h-114.71c-4.142,0-7.5,3.358-7.5,7.5 0.003,4.145 3.36,7.5 7.5,7.5z"/>
+          <path d="m241.009,272.209c-1.416-1.895-3.643-3.011-6.008-3.011-2.366,0-4.592,1.116-6.008,3.011l-25.739,34.448c-5.115,6.867-7.818,15.032-7.818,23.615 0,21.817 17.749,39.566 39.565,39.566 21.817,0 39.566-17.749 39.566-39.566 0-8.583-2.703-16.748-7.825-23.624l-25.733-34.439zm-30.573,58.063c0-5.329 1.676-10.397 4.841-14.646l19.724-26.398 19.719,26.389c3.171,4.258 4.848,9.326 4.848,14.655 0,13.546-11.021,24.566-24.566,24.566-13.546,1.13687e-13-24.566-11.02-24.566-24.566z"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="pencil" viewBox="0 0 30.68 30.68">
+      <g>
+    		<polygon points="24.562,2.313 28.538,6.364 27.229,7.649 25.341,5.727 24.562,6.489 26.45,8.415 25.607,9.24 24.383,7.99
+    			23.604,8.755 24.829,10.005 23.672,11.139 21.784,9.216 21.006,9.98 22.895,11.904 22.051,12.73 20.827,11.48 20.047,12.245
+    			22.363,14.546 30.68,6.384 24.584,0.172 16.171,8.427 17.241,9.498 		"/>
+    		<polygon points="12.756,19.002 14.182,20.454 13.113,21.501 11.025,19.374 10.247,20.138 12.334,22.265 11.492,23.091
+    			10.068,21.64 9.289,22.405 10.713,23.856 9.557,24.991 7.47,22.864 6.69,23.627 8.778,25.755 7.935,26.583 6.51,25.13
+    			5.733,25.895 7.157,27.345 6.116,28.368 2.141,24.315 11.006,15.615 9.935,14.546 0,24.294 6.097,30.507 16.036,20.793
+    			13.535,18.237 		"/>
+    		<path d="M12.365,6.064l0.009-0.008L8.285,1.968L3.479,6.774l4.089,4.089l0.006-0.007l12.669,12.669l7.789,3.422l-2.919-8.1
+    			L12.365,6.064z M6.784,8.289L5.271,6.775l3.016-3.016L9.8,5.271L6.784,8.289z M25.016,24.944l-4.367-1.906l-0.576-0.578
+    			l2.578,0.154l-0.435-1.793l1.89,0.336l0.021-2.444l0.416,0.417l1.664,4.625L25.016,24.944z"/>
+    	</g>
+    </symbol>
+    <symbol id="facebook" viewBox="0 0 97.75 97.75">
+      <g>
+      	<path d="M48.875,0C21.882,0,0,21.882,0,48.875S21.882,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.868,0,48.875,0z
+      		 M67.521,24.89l-6.76,0.003c-5.301,0-6.326,2.519-6.326,6.215v8.15h12.641L67.07,52.023H54.436v32.758H41.251V52.023H30.229V39.258
+      		h11.022v-9.414c0-10.925,6.675-16.875,16.42-16.875l9.851,0.015V24.89L67.521,24.89z"/>
+      </g>
+    </symbol>
+    <symbol id="twitter" viewBox="0 0 512 512">
+      <g>
+        <path d="m256 0c-141.363281 0-256 114.636719-256 256s114.636719 256 256 256 256-114.636719 256-256-114.636719-256-256-256zm116.886719 199.601562c.113281 2.519532.167969 5.050782.167969 7.59375 0 77.644532-59.101563 167.179688-167.183594 167.183594h.003906-.003906c-33.183594 0-64.0625-9.726562-90.066406-26.394531 4.597656.542969 9.277343.8125 14.015624.8125 27.53125 0 52.867188-9.390625 72.980469-25.152344-25.722656-.476562-47.410156-17.464843-54.894531-40.8125 3.582031.6875 7.265625 1.0625 11.042969 1.0625 5.363281 0 10.558593-.722656 15.496093-2.070312-26.886718-5.382813-47.140624-29.144531-47.140624-57.597657 0-.265624 0-.503906.007812-.75 7.917969 4.402344 16.972656 7.050782 26.613281 7.347657-15.777343-10.527344-26.148437-28.523438-26.148437-48.910157 0-10.765624 2.910156-20.851562 7.957031-29.535156 28.976563 35.554688 72.28125 58.9375 121.117187 61.394532-1.007812-4.304688-1.527343-8.789063-1.527343-13.398438 0-32.4375 26.316406-58.753906 58.765625-58.753906 16.902344 0 32.167968 7.144531 42.890625 18.566406 13.386719-2.640625 25.957031-7.53125 37.3125-14.261719-4.394531 13.714844-13.707031 25.222657-25.839844 32.5 11.886719-1.421875 23.214844-4.574219 33.742187-9.253906-7.863281 11.785156-17.835937 22.136719-29.308593 30.429687zm0 0"/>
+      </g>
+    </symbol>
+    <symbol id="google" viewBox="0 0 24 24">
+      <g>
+        <path d="m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.283-12.857h1.718v-1.717h1.718v1.718h1.703v1.718h-1.703v1.718h-1.718v-1.718h-1.718zm-7.704-5.144c1.514 0 2.908.533 4.017 1.563l-1.626 1.578c-.639-.625-1.514-.924-2.391-.924-2.076 0-3.736 1.718-3.736 3.779s1.655 3.779 3.736 3.779c1.577 0 3.14-.924 3.392-2.579h-3.392v-2.061h5.657c.063.329.092.658.092 1.001 0 3.426-2.299 5.864-5.749 5.864v.001c-3.329 0-6.001-2.686-6.001-6.001s2.672-6 6.001-6z"/>
+      </g>
+    </symbol>
+    <symbol id="instagram" viewBox="0 0 512 512">
+      <g>
+        <path d="m305 256c0 27.0625-21.9375 49-49 49s-49-21.9375-49-49 21.9375-49 49-49 49 21.9375 49 49zm0 0"/><path d="m370.59375 169.304688c-2.355469-6.382813-6.113281-12.160157-10.996094-16.902344-4.742187-4.882813-10.515625-8.640625-16.902344-10.996094-5.179687-2.011719-12.960937-4.40625-27.292968-5.058594-15.503906-.707031-20.152344-.859375-59.402344-.859375-39.253906 0-43.902344.148438-59.402344.855469-14.332031.65625-22.117187 3.050781-27.292968 5.0625-6.386719 2.355469-12.164063 6.113281-16.902344 10.996094-4.882813 4.742187-8.640625 10.515625-11 16.902344-2.011719 5.179687-4.40625 12.964843-5.058594 27.296874-.707031 15.5-.859375 20.148438-.859375 59.402344 0 39.25.152344 43.898438.859375 59.402344.652344 14.332031 3.046875 22.113281 5.058594 27.292969 2.359375 6.386719 6.113281 12.160156 10.996094 16.902343 4.742187 4.882813 10.515624 8.640626 16.902343 10.996094 5.179688 2.015625 12.964844 4.410156 27.296875 5.0625 15.5.707032 20.144532.855469 59.398438.855469 39.257812 0 43.90625-.148437 59.402344-.855469 14.332031-.652344 22.117187-3.046875 27.296874-5.0625 12.820313-4.945312 22.953126-15.078125 27.898438-27.898437 2.011719-5.179688 4.40625-12.960938 5.0625-27.292969.707031-15.503906.855469-20.152344.855469-59.402344 0-39.253906-.148438-43.902344-.855469-59.402344-.652344-14.332031-3.046875-22.117187-5.0625-27.296874zm-114.59375 162.179687c-41.691406 0-75.488281-33.792969-75.488281-75.484375s33.796875-75.484375 75.488281-75.484375c41.6875 0 75.484375 33.792969 75.484375 75.484375s-33.796875 75.484375-75.484375 75.484375zm78.46875-136.3125c-9.742188 0-17.640625-7.898437-17.640625-17.640625s7.898437-17.640625 17.640625-17.640625 17.640625 7.898437 17.640625 17.640625c-.003906 9.742188-7.898437 17.640625-17.640625 17.640625zm0 0"/><path d="m256 0c-141.363281 0-256 114.636719-256 256s114.636719 256 256 256 256-114.636719 256-256-114.636719-256-256-256zm146.113281 316.605469c-.710937 15.648437-3.199219 26.332031-6.832031 35.683593-7.636719 19.746094-23.246094 35.355469-42.992188 42.992188-9.347656 3.632812-20.035156 6.117188-35.679687 6.832031-15.675781.714844-20.683594.886719-60.605469.886719-39.925781 0-44.929687-.171875-60.609375-.886719-15.644531-.714843-26.332031-3.199219-35.679687-6.832031-9.8125-3.691406-18.695313-9.476562-26.039063-16.957031-7.476562-7.339844-13.261719-16.226563-16.953125-26.035157-3.632812-9.347656-6.121094-20.035156-6.832031-35.679687-.722656-15.679687-.890625-20.6875-.890625-60.609375s.167969-44.929688.886719-60.605469c.710937-15.648437 3.195312-26.332031 6.828125-35.683593 3.691406-9.808594 9.480468-18.695313 16.960937-26.035157 7.339844-7.480469 16.226563-13.265625 26.035157-16.957031 9.351562-3.632812 20.035156-6.117188 35.683593-6.832031 15.675781-.714844 20.683594-.886719 60.605469-.886719s44.929688.171875 60.605469.890625c15.648437.710937 26.332031 3.195313 35.683593 6.824219 9.808594 3.691406 18.695313 9.480468 26.039063 16.960937 7.476563 7.34375 13.265625 16.226563 16.953125 26.035157 3.636719 9.351562 6.121094 20.035156 6.835938 35.683593.714843 15.675781.882812 20.683594.882812 60.605469s-.167969 44.929688-.886719 60.605469zm0 0"/>
+      </g>
+    </symbol>
+    <symbol id="up-arrow" viewBox="0 0 492.002 492.002">
+      <g>
+    		<path d="M484.136,328.473L264.988,109.329c-5.064-5.064-11.816-7.844-19.172-7.844c-7.208,0-13.964,2.78-19.02,7.844
+    			L7.852,328.265C2.788,333.333,0,340.089,0,347.297c0,7.208,2.784,13.968,7.852,19.032l16.124,16.124
+    			c5.064,5.064,11.824,7.86,19.032,7.86s13.964-2.796,19.032-7.86l183.852-183.852l184.056,184.064
+    			c5.064,5.06,11.82,7.852,19.032,7.852c7.208,0,13.96-2.792,19.028-7.852l16.128-16.132
+    			C494.624,356.041,494.624,338.965,484.136,328.473z"/>
+    	</g>
+    </symbol>
+  </svg>
+  <!--SVG SPRITES-END-->
+
+
+    <div class="wrapper">
+      <header class="header" id="header">
+        <div class="container">
+          <div class="header__inner">
+            <!--BURGER__Menu-->
+            <div class="burger__wrap">
+              <div class="burger__menu">
+                <span></span>
+              </div>
+            </div>
+            <!--/BURGER__Menu_end-->
+            <p class="header__logo">TatooStudio</p>
+            <nav class="menu one">
+              <ul class="menu__items ">
+                <li class="menu__item "><a class="menu__link" >home</a></li>
+                <li class="accord"></li>
+                <li class="menu__item"><a class="menu__link" >pages <span class="arrow__down"></span> </a>
+                  <div class="sub__menu">
+                      <div class="sub__menu_inner">
+                        <div class="sub__menu_item">
+                          <h2 class="sub__menu_title">elements</h2>
+                          <ul>
+                            <li class="sub__menu_link" ><a href=""> typography</a></li>
+                            <li class="sub__menu_link" ><a href=""> grid</a></li>
+                            <li class="sub__menu_link" ><a href=""> icons</a></li>
+                            <li class="sub__menu_link" ><a href=""> buttons</a></li>
+                            <li class="sub__menu_link" ><a href=""> forms</a></li>
+                            <li class="sub__menu_link" ><a href=""> progress bars</a></li>
+                            <li class="sub__menu_link" ><a href=""> tables</a></li>
+                            <li class="sub__menu_link" ><a href=""> tabs & accordions</a></li>
+                          </ul>
+                        </div><!--/sub__menu_item1-->
+
+                        <div class="sub__menu_item">
+                          <h2 class="sub__menu_title">extra</h2>
+                          <ul>
+                            <li class="sub__menu_link" ><a href=""> maintenance</a></li>
+                            <li class="sub__menu_link" ><a href=""> 404 page</a></li>
+                            <li class="sub__menu_link" ><a href=""> 503 page</a></li>
+                            <li class="sub__menu_link" ><a href=""> coming soon</a></li>
+                            <li class="sub__menu_link" ><a href=""> login page</a></li>
+                            <li class="sub__menu_link" ><a href=""> register page</a></li>
+                          </ul>
+                        </div><!--/sub__menu_item2-->
+
+                        <div class="sub__menu_item">
+                          <h2 class="sub__menu_title">pages</h2>
+                          <ul>
+                            <li class="sub__menu_link" ><a href="">site map</a></li>
+                            <li class="sub__menu_link" ><a href="">privacy policy</a></li>
+                            <li class="sub__menu_link" ><a href="">search results</a></li>
+                          </ul>
+                        </div><!--/sub__menu_item3-->
+
+                      </div><!--sub__menu_inner BIG-->
+                  </div><!--sub__menu BIG-->
+
+                </li><!--/menu__item2 -->
+
+                <ul class="accord">
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Home</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Typography</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Grid</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Icons</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Buttons</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">Forms</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">progress bars</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">tables</a>
+                  </li>
+                  <li class="accord__item">
+                    <a href="" class="accord__link">tabs&accordions</a>
+                  </li>
+                </ul>
+
+                <li class="menu__item litle__sub"><a class="menu__link" >artists  <span class="arrow__down"></span> </a>
+                  <div class="sub__menu_little">
+                      <ul>
+                        <li class="sub__menu_link"><a href="">artists</a></li>
+                        <li class="sub__menu_link"><a href="">about in artists</a></li>
+                      </ul>
+                  </div>
+
+                </li><!--/menu__item 3-->
+
+                <li class="accord">
+                  <div class="accord__item">
+                    <a href="" class="accord__link">Artists</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">About An Artists</a>
+                  </div>
+                </li>
+
+                <li class="menu__item litle__sub"><a class="menu__link" >services  <span class="arrow__down"></span> </a>
+                  <div class="sub__menu_little">
+                      <ul>
+                        <li class="sub__menu_link"><a href="">about us</a></li>
+                        <li class="sub__menu_link"><a href="">make an apointment</a></li>
+                        <li class="sub__menu_link"><a href="">services</a></li>
+                        <li class="sub__menu_link"><a href="">single service</a></li>
+                        <li class="sub__menu_link"><a href="">careers</a></li>
+                        <li class="sub__menu_link"><a href="">faq</a></li>
+                        <li class="sub__menu_link"><a href="">pricing table</a></li>
+                      </ul>
+                  </div>
+                </li><!--/menu__item 4-->
+                <li class="accord">
+                  <div class="accord__item">
+                    <a href="" class="accord__link">About Us</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">make an apointment</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">services</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">careers</a>
+                  </div>
+
+                </li>
+                <li class="menu__item litle__sub"><a class="menu__link" >works  <span class="arrow__down"></span> </a>
+                  <div class="sub__menu_little">
+                      <ul>
+                        <li class="sub__menu_link"><a href="">WORKS WITH GRID VIEW</a></li>
+                        <li class="sub__menu_link"><a href="">FULL WIDTH WORKS WITH GRID</a></li>
+                        <li class="sub__menu_link"><a href="">WORKS WITH MASONRY VIEW</a></li>
+                        <li class="sub__menu_link"><a href="">COBBLES GRID</a></li>
+                      </ul>
+                  </div>
+                </li><!--/menu__item 5-->
+
+                <li class="accord">
+                  <div class="accord__item">
+                    <a href="" class="accord__link">WORKS WITH GRID VIEW</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">FULL WIDTH WORKS WITH GRID</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">WORKS WITH MASONRY VIEW</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">COBBLES GRID</a>
+                  </div>
+                </li>
+
+                <li class="menu__item litle__sub"><a class="menu__link" >blog  <span class="arrow__down"></span> </a>
+                  <div class="sub__menu_little">
+                      <ul>
+                        <li class="sub__menu_link"><a href="">classic blog</a></li>
+                        <li class="sub__menu_link"><a href="">grid blog</a></li>
+                        <li class="sub__menu_link"><a href="">masonry blog</a></li>
+                        <li class="sub__menu_link"><a href="">blog post</a></li>
+                        <li class="sub__menu_link"><a href="">modern blog</a></li>
+                      </ul>
+                  </div>
+                </li><!--/menu__item 6-->
+
+                <li class="accord">
+                  <div class="accord__item">
+                    <a href="" class="accord__link">classic blog</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">grid blog</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">masonry blog</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">Blog post</a>
+                  </div>
+                </li>
+
+                <li class="menu__item litle__sub"><a class="menu__link" >shop  <span class="arrow__down"></span> </a>
+                  <div class="sub__menu_little">
+                      <ul>
+                        <li class="sub__menu_link"><a href="">cart page</a></li>
+                        <li class="sub__menu_link"><a href="">single product</a></li>
+                        <li class="sub__menu_link"><a href="">shop list</a></li>
+                        <li class="sub__menu_link"><a href="">shop grid</a></li>
+                      </ul>
+                  </div>
+                </li><!--/menu__item 7-->
+
+                <li class="accord">
+                  <div class="accord__item">
+                    <a href="" class="accord__link">cart page</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">single product</a>
+                  </div>
+                  <div class="accord__item">
+                    <a href="" class="accord__link">shop list</a>
+                  </div>
+                </li>
+
+                <li class="menu__item">
+                  <a class="menu__link" href="#">contact us</a>
+                </li>
+                <li class="accord"></li>
+                <li class="menu__item"><a class="menu__link" >+1 (234) 56-789</a></li>
+                <li class="accord"></li>
+              </ul><!--/menu__items-->
+            </nav><!--/menu-->
+          </div><!--/header__inner-->
+        </div><!--/container-->
+      </header><!--/header-->
+
+      <!--slider-->
+
+      <div class="slider" id="slider">
+        <ul class="bxslider">
+            <li><img class="slider__img" src="images/slider/1.jpg" alt="sliderIMG" />
+              <div class="slider__info">
+                <h2 class="slider__title">Good tatoo is...</h2>
+                <p class="slider__text">an Extension of the Character and Your State of Soul</p>
+                <a class="slider__link" href="#">make an apointment</a>
+              </div>
+            </li>
+
+            <li><img class="slider__img img_man" src="images/slider/2.jpg" alt="sliderIMG" />
+              <div class="slider__info slider_info_left">
+                <h2 class="slider__title">We have Gathered...</h2>
+                <p class="slider__text">the most Creative Tatooists from all over the World</p>
+                <a class="slider__link" href="#">make an apointment</a>
+              </div>
+            </li>
+        </ul><!-- bs-slider -->
+      </div><!--/slider-->
+      <!-- about us -->
+      <div class="about" id="about">
+        <div class="container">
+          <div class="title">
+            <h2 class="title__text">About Us</h2>
+          </div><!--/title-->
+          <div class="about__inner">
+            <div class="about__info">
+              <h3 class="about__info_title">We are a professional team of tattoists</h3>
+              <p class="about__info_text">Our tattoo salon is a home for talented tattoo
+                artists ready to turn your body into a canvas with beautiful pictures on it.</p>
+              <p class="about__info_text">To get your body inked in our tattoo salon, you may
+                contact us via contact form on our website, or by phone. We welcome
+                appointments, as well as walk-ins. We have gathered the best team of tattoo
+                artists who work full time in our salon, and we have fantastic guest artists visiting our shop.</p>
+              <div class="about__skill">
+                <div class="about__skill_item">
+                  <p class="skill__count">8600</p>
+                  <p class="skill__name">Reviews</p>
+                </div><!--/about__skill_item1-->
+
+                <div class="about__skill_item">
+                  <p class="skill__count">1580</p>
+                  <p class="skill__name">Tattoos</p>
+                </div><!--/about__skill_item2-->
+
+                <div class="about__skill_item">
+                  <p class="skill__count">975</p>
+                  <p class="skill__name">Happy Clients</p>
+                </div><!--/about__skill_item3-->
+              </div><!--/about__skill-->
+            </div> <!--/about__info-->
+            <div class="about__img">
+              <img src="images/about/1.jpg" alt="" class="about__picture">
+            </div> <!--/about__img-->
+          </div><!--/about__inner-->
+        </div><!--/container-->
+      </div><!--/about-->
+
+      <!-- our works -->
+
+      <div class="works" id="works">
+        <div class="container">
+          <div class="title__left">
+            <h2 class="title__text">Our Works</h2>
+            <p class="title__info">Browse our gallery and discover the latest works of our artists.</p>
+            <a class="slider__link orange" href="#">enter the gallery</a>
+          </div>
+        </div><!--/container-->
+        <div class="works__inner">
+          <div class="works__item">
+            <img class="works__image" src="images/works/1.jpg" alt="">
+          </div><!--/works__item1-->
+          <div class="works__item">
+            <img class="works__image" src="images/works/2.jpg" alt="">
+          </div><!--/works__item2-->
+          <div class="works__item">
+            <img class="works__image" src="images/works/3.jpg" alt="">
+          </div><!--/works__item3-->
+          <div class="works__item">
+            <img class="works__image" src="images/works/4.jpg" alt="">
+          </div><!--/works__item4-->
+        </div><!--/works__inner-->
+      </div><!--/works-->
+
+      <!-- WHAT WE DO -->
+
+      <div class="wedo">
+        <div class="container">
+          <div class="title">
+            <h2 class="title__text">What We Do</h2>
+            <p class="title__subtext">Our mission is to provide you with quality and original tattoo art using advanced sterilization
+              techniques, produced in a comfortable and safe environment by professionals.</p>
+          </div><!--/title-->
+          <div class="wedo__inner">
+            <div class="wedo__item">
+              <div class="wedo__item_back">
+                <div class="wedo__item_img">
+                  <svg class="wedo__item_svg">
+                    <use xlink:href="#tattooing"></use>
+                  </svg>
+                </div>
+              </div>
+              <a class="wedo__item_title" href="#">Tattooing</a>
+              <p class="wedo__item_text">For a premium result, at our tattoo shop we combine modern technics with traditional ones.</p>
+              <a class="wedo__item_link" href="#">Read More</a>
+            </div><!--/wedo__item1-->
+            <div class="wedo__item">
+              <div class="wedo__item_back">
+                <div class="wedo__item_img">
+                  <svg class="wedo__item_svg">
+                    <use xlink:href="#piercing"></use>
+                  </svg>
+                </div>
+              </div>
+              <a class="wedo__item_title" href="#">Piercing</a>
+              <p class="wedo__item_text">Want some extra holes in your body? Our piercing masters will make some for you.</p>
+              <a class="wedo__item_link" href="#">Read More</a>
+            </div><!--/wedo__item2-->
+            <div class="wedo__item">
+              <div class="wedo__item_back">
+                <div class="wedo__item_img">
+                  <svg class="wedo__item_svg">
+                    <use xlink:href="#cover"></use>
+                  </svg>
+                </div>
+              </div>
+              <a class="wedo__item_title" href="#">Tatto Cover Up</a>
+              <p class="wedo__item_text">Got some old tattoos that you don’t find pretty? Our talented artists will cover them up for you.</p>
+              <a class="wedo__item_link" href="#">Read More</a>
+            </div><!--/wedo__item3-->
+            <div class="wedo__item">
+              <div class="wedo__item_back">
+                <div class="wedo__item_img">
+                  <svg class="wedo__item_svg">
+                    <use xlink:href="#pencil"></use>
+                  </svg>
+                </div>
+              </div>
+              <a class="wedo__item_title" href="#">Tattoo design</a>
+              <p class="wedo__item_text">Nothing can beat the challenge of creating a design that initially is only in your imagination.</p>
+              <a class="wedo__item_link" href="#">Read More</a>
+            </div><!--/wedo__item4-->
+          </div><!--/wedo__inner-->
+        </div><!--/container-->
+      </div><!--/wedo-->
+
+      <!-- ARTISTS -->
+
+      <div class="artists">
+        <div class="container">
+          <div class="title titler__artist">
+            <h2 class="title__text title__text_artist">Our artists</h2>
+            <p class="title__subtext title__subtext_artist">Our team of tattoo artists represents true professionalism and dedication
+            in everything that concerns high-quality and durable tattoos.</p>
+          </div><!--/title-->
+          <div class="artists__inner">
+            <div class="artists__item">
+              <img class="artists__img" src="images/artists/1.jpg" alt="">
+              <div class="artists__info">
+                  <a class="artists__name" href="#">Sara Morgan</a>
+                  <p class="artists__prof">Tatto Masters</p>
+                <div class="artists__social_link">
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#google"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div><!--/artists__item1-->
+            <div class="artists__item">
+              <img class="artists__img" src="images/artists/2.jpg" alt="">
+              <div class="artists__info">
+                  <a class="artists__name" href="#">Edwin Wood</a>
+                  <p class="artists__prof">Tatto Masters</p>
+                <div class="artists__social_link">
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#google"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div><!--/artists__item2-->
+            <div class="artists__item">
+              <img class="artists__img" src="images/artists/3.jpg" alt="">
+              <div class="artists__info">
+                  <a class="artists__name" href="#">Susy Smith</a>
+                  <p class="artists__prof">Tatto Masters</p>
+                <div class="artists__social_link">
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#google"></use>
+                    </svg>
+                  </a>
+                  <a class="social__row" href="">
+                    <svg class="social__icon">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div><!--/artists__item3-->
+          </div><!--/artists__inner-->
+        </div><!--/container-->
+      </div><!--/ARTISTS-->
+
+      <!-- TESTIMONIALS -->
+
+      <div class="testimonials">
+        <div class="container">
+          <div class="title">
+            <h2 class="title__text">Testimonials</h2>
+          </div><!--/title-->
+              <div class="testimonials__slider">
+                <div class="testimonials__slider__img">
+                  <div class="testimonials__slider__item">
+                    <img src="images/testimonials/face1.jpg" alt="">
+                  </div>
+                  <div class="testimonials__slider__item">
+                    <img src="images/testimonials/face2.jpg" alt="">
+                  </div>
+                  <div class="testimonials__slider__item">
+                    <img src="images/testimonials/face3.jpg" alt="">
+                  </div>
+                  <div class="testimonials__slider__item">
+                    <img src="images/testimonials/face4.jpg" alt="">
+                  </div>
+                  <!-- <div class="slider__item">
+                    <img src="5.jpg" alt="">
+                  </div> -->
+                </div><!--/testimonials__slider__img-->
+
+                <div class="testimonials__slider__text">
+                  <div class="testimonials__text__item">
+                    <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Distinctio quasi maxime eius repellat fugiat, sunt omnis fugit eos unde, quas
+                      eum corporis pariatur aspernatur! Ex doloremque ab odio cumque, ipsa commodi
+                      harum quibusdam earum minima, laboriosam, consectetur placeat aut. Doloribus.</p>
+                      <p class="testimonials__text__author">John Doee</p>
+                  </div>
+                  <div class="testimonials__text__item">
+                    <p class="testimonials__text">2Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Distinctio quasi maxime eius repellat fugiat, sunt omnis fugit eos unde, quas
+                      eum corporis pariatur aspernatur! Ex doloremque ab odio cumque, ipsa commodi
+                      harum quibusdam earum minima, laboriosam, consectetur placeat aut. Doloribus.</p>
+                    <p class="testimonials__text__author">Julia Sanders</p>
+                  </div>
+                  <div class="testimonials__text__item">
+                    <p class="testimonials__text">3Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Distinctio quasi maxime eius repellat fugiat, sunt omnis fugit eos unde, quas
+                      eum corporis pariatur aspernatur! Ex doloremque ab odio cumque, ipsa commodi
+                      harum quibusdam earum minima, laboriosam, consectetur placeat aut. Doloribus.</p>
+                      <p class="testimonials__text__author">Patrick Emberson</p>
+                  </div>
+                  <div class="testimonials__text__item">
+                    <p class="testimonials__text">4Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Distinctio quasi maxime eius repellat fugiat, sunt omnis fugit eos unde, quas
+                      eum corporis pariatur aspernatur! Ex doloremque ab odio cumque, ipsa commodi
+                      harum quibusdam earum minima, laboriosam, consectetur placeat aut. Doloribus.</p>
+                      <p class="testimonials__text__author">John Wilson</p>
+                  </div>
+                </div><!--/testimonials__slider__text-->
+              </div><!--/testimonials__slider-->
+        </div><!--/container-->
+      </div><!--/testimonials-->
+
+      <!-- CONTACT US -->
+      <div class="contact">
+        <div class="container">
+          <div class="contact__inner">
+            <div class="contact__img">
+              <img src="images/contact/1.png" alt="">
+            </div>
+            <div class="contact__data">
+              <div class="title">
+                <h2 class="title__text">Contact Us</h2>
+                <p class="title__subtext title__subtext_contact">We are sure that tattooing will affect
+                your life in a positive way. So why waiting?</p>
+              </div>
+                <div class="form__wrap">
+                  <form class="contact__form" action="index.html" method="post">
+                    <input class="" type="text" name="name" value="" placeholder="Name">
+                    <input class="" type="text" name="text" value="" placeholder="Phone">
+                    <input class="" type="email" name="email" value="" placeholder="E-Mail">
+                    <textarea name="name" rows="8" cols="80" placeholder="Message"></textarea>
+                    <a class="slider__link orange slider__link_form" href="#">send a letter</a>
+                  </form>
+                </div>
+            </div><!--/contact__data-->
+          </div><!--/contact__inner-->
+        </div><!--/container-->
+      </div><!--/contact-->
+
+      <!-- FOOOTER -->
+
+      <div class="footer">
+        <div class="container">
+          <div class="footer__inner">
+            <div class="footer__about footer__item">
+              <h3 class="footer__title">About Us</h3>
+              <p class="footer__text">Welcome to Tattoo Studio! Our focus is to break
+                 the image of the stereotypical tattoo parlour, while still remaining
+                 true to the roots of a traditional tattoo shop.
+              </p>
+              <div class="footer__contact">
+                <span class="footer__icon"><i class="fas fa-phone-alt"></i></span>
+                <a href="">+1 (234) 56-789</a>
+              </div>
+              <div class="footer__contact">
+                <span class="footer__icon"><i class="fas fa-envelope"></i></span>
+                <a href="">info@demolink.org</a>
+              </div>
+              <div class="footer__contact">
+                <span class="footer__icon"><i class="fas fa-map-marker-alt"></i></span>
+                <a class="footer__address" href="">267 Park Avenue <br> New York, NY 90210</a>
+              </div>
+            </div><!--footer__about-->
+            <div class="footer__gallery footer__item">
+              <h3 class="footer__title">Gallery</h3>
+                <div class="gallery__wrap">
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/1.jpg" alt="">
+                  </div>
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/2.jpg" alt="">
+                  </div>
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/3.jpg" alt="">
+                  </div>
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/4.jpg" alt="">
+                  </div>
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/5.jpg" alt="">
+                  </div>
+                  <div class="gallery__item">
+                    <img class="gallery__image" src="images/footer/6.jpg" alt="">
+                  </div>
+                </div>
+            </div><!--/footer__galery-->
+            <div class="footer__hours footer__item">
+              <h3 class="footer__title">Opening Hours</h3>
+              <div class="days">
+                <span class="days__name">Monday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Tuesday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Wednesday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Thursday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Friday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Saturday:</span>
+                <span class="days__hour">8 am-10 pm</span>
+              </div>
+              <div class="days">
+                <span class="days__name">Sunday:</span>
+                <span class="days__hour">Closed</span>
+              </div>
+            </div><!--/footer__hours-->
+
+            <div class="footer__link footer__item">
+              <h3 class="footer__title">Useful Links</h3>
+              <ul class="useful__links">
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">Services</a> </li>
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">About Us</a> </li>
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">Appointment</a> </li>
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">Shop</a> </li>
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">Contacts</a> </li>
+                <li class="useful__link_item"><i class="fas fa-chevron-right"></i> <a class="useful__links_link" href="#">Blog</a> </li>
+              </ul>
+            </div><!--/footer__link-->
+          </div><!--/footer__inner-->
+        </div><!--/container-->
+      </div><!--/footer-->
+      <div class="underground">
+        <div class="container">
+          <div class="underground__inner">
+            <div class="copyright">
+              <p>© 2020 Tattoo Studio. Privacy Policy</p>
+            </div>
+            <div class="follow">
+              <div class="follow__text">
+                Follow Us:
+              </div>
+              <div class="follow__social_link">
+                <a class="social__row" href="">
+                  <svg class="social__icon follow__icon">
+                    <use xlink:href="#facebook"></use>
+                  </svg>
+                </a>
+                <a class="social__row" href="">
+                  <svg class="social__icon follow__icon">
+                    <use xlink:href="#twitter"></use>
+                  </svg>
+                </a>
+                <a class="social__row" href="">
+                  <svg class="social__icon follow__icon">
+                    <use xlink:href="#google"></use>
+                  </svg>
+                </a>
+                <a class="social__row" href="">
+                  <svg class="social__icon follow__icon">
+                    <use xlink:href="#instagram"></use>
+                  </svg>
+                </a>
+              </div>
+            </div><!--/follow-->
+          </div><!--/underground__inner-->
+        </div><!--/container-->
+      </div><!--/underground-->
+
+      <!-- Button UPPP -->
+      <a href="#slider" class="button__up" id="button">
+        <svg class="arrow__up">
+          <use xlink:href="#up-arrow"></use>
+        </svg>
+      </a>
+    </div><!--/wrapper-->
+
+
+
+    <!-- jQuery library (served from Google) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="js/script.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script src="js/slick.min.js"></script>
+
+  </body>
+</html>
